@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            height: 400px;
+            width: 400px;
+            border: 2px solid slategrey;
+            border-radius: 10px;
+            background: greenyellow;
+            position: relative;
+        }
+        #inside{
+            height: 50px;
+            width: 50px;
+            border: 2px solid white;
+            border-radius: 10px;    
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="inside" onmouseover="onMouseOver()" onmouseout="onMouseOut()"></div>
+    </div>
+    <p><button onclick="myMove()">Click</button></p>
+    <script>
+        function myMove(){
+            let pos=0;
+            const elem=document.getElementById("inside");
+            const id=setInterval(frame,10);
+            function frame(){
+                if(pos==350){
+                    clearInterval(id);
+                }
+                pos++;
+                elem.style.top=pos+ 'px';
+                elem.style.left=pos++ + 'px';
+            }
+        }
+        function onMouseOver(){
+            var div=document.getElementById('inside');
+            div.style.backgroundColor="blue"
+        }
+        function onMouseOut(){
+            var div=document.getElementById('inside');
+            div.style.backgroundColor="red"
+        }
+    </script>
+</body>
+</html>
